@@ -1,0 +1,17 @@
+{
+  "name": "dreamshot",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "simulate": "ts-node scripts/simulate-spins.ts"
+  },
+  "keywords": [],
+  "author": "Petar Todorov",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
