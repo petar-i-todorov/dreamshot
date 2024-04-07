@@ -4,7 +4,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "simulate": "ts-node scripts/simulate-spins.ts"
+    "simulate": "ts-node scripts/simulate-spins.ts",
+    "test": "ts-node tests/slot-machine/slot-machine.ts"
   },
   "keywords": [],
   "author": "Petar Todorov",
