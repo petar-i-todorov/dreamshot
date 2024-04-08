@@ -25,7 +25,7 @@ export class Slot {
 
   spin(betPerSpin: number = 1) {
     const reelPositions = this.getReelPositions();
-    const lineResults: Array<LineResult> = this.getLineResults(reelPositions);
+    const lineResults = this.getLineResults(reelPositions);
     this.printResults(reelPositions, lineResults);
     const totalPayout = lineResults.reduce(
       (total, result) => total + result.payout,
@@ -35,7 +35,7 @@ export class Slot {
     return totalPayout * betPerSpin;
   }
 
-  private getReelPositions(): SymbolResult[][] {
+  private getReelPositions() {
     return this.config.reels.map((reel) => {
       let positions = new Set<number>();
       while (positions.size < this.config.rowsCount) {
@@ -48,7 +48,7 @@ export class Slot {
     });
   }
 
-  private getLineResults(reelPositions: SymbolResult[][]): Array<LineResult> {
+  private getLineResults(reelPositions: SymbolResult[][]) {
     return this.config.lines.map((pattern) => {
       let payout = 0;
       const lineSymbols = pattern.map((rowPosition, reelIndex) => {
@@ -80,7 +80,7 @@ export class Slot {
     reelPositions: SymbolResult[][],
     lineResults: Array<LineResult>
   ) {
-    console.log("Spin result:");
+    console.info("Spin result:");
 
     const rows: number[][] = [];
     for (let rowIndex = 0; rowIndex < this.config.rowsCount; rowIndex++) {
@@ -89,12 +89,12 @@ export class Slot {
     }
 
     rows.forEach((rowSymbols, index) => {
-      console.log(`Row ${index + 1}: ${rowSymbols.join(" | ")}`);
+      console.info(`Row ${index + 1}: ${rowSymbols.join(" | ")}`);
     });
 
-    console.log("Line payouts:");
+    console.info("Line payouts:");
     lineResults.forEach((result, index) => {
-      console.log(
+      console.info(
         `Line ${index + 1}: ${result.line
           .map((pos, reelIndex) => rows[pos][reelIndex])
           .join(" | ")}, Payout: ${result.payout}`
